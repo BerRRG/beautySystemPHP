@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Model\Client;
-use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class ClientController extends BaseController
 {
@@ -20,12 +24,10 @@ class ClientController extends BaseController
     {
         // get all the clients
         $clients = Client::all();
-
         // load the view and pass the clients
         return View::make('clients.index')
             ->with('clients', $clients);
     }
-
     /*
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,6 @@ class ClientController extends BaseController
     {
         return View::make('clients.create');
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -47,7 +48,17 @@ class ClientController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email'
+            'address'       => 'required',
+            'neighborhood'       => 'required',
+            'city'       => 'required',
+            'uf'       => 'required',
+            'celphone'       => 'required',
+            'occupation'       => 'required',
+            'marital_status'       => 'required',
+            'phone'       => 'required',
+            'cep'       => 'required',
+            'email'      => 'required|email',
+            'birth_date'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -61,6 +72,17 @@ class ClientController extends BaseController
             $client = new Client;
             $client->name       = Input::get('name');
             $client->email      = Input::get('email');
+            $client->address      = Input::get('address');
+            $client->neighborhood      = Input::get('neighborhood');
+            $client->city      = Input::get('city');
+            $client->uf      = Input::get('uf');
+            $client->celphone      = Input::get('celphone');
+            $client->occupation      = Input::get('occupation');
+            $client->marital_status      = Input::get('marital_status');
+            $client->phone      = Input::get('phone');
+            $client->cep      = Input::get('cep');
+            $client->birth_date      = Input::get('birth_date');;
+
             $client->save();
 
             // redirect
@@ -68,7 +90,6 @@ class ClientController extends BaseController
             return Redirect::to('clients');
         }
     }
-
     /*
      * Display the specified resource.
      *
@@ -79,12 +100,10 @@ class ClientController extends BaseController
     {
         // get the client
         $client = Client::find($id);
-
         // show the view and pass the client to it
         return View::make('clients.show')
             ->with('client', $client);
     }
-
     /*
      * Show the form for editing the specified resource.
      *
@@ -95,12 +114,10 @@ class ClientController extends BaseController
     {
         // get the client
         $client = Client::find($id);
-
         // show the edit form and pass the client
         return View::make('clients.edit')
             ->with('client', $client);
     }
-
     /*
      * Update the specified resource in storage.
      *
@@ -113,7 +130,17 @@ class ClientController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
+            'address'       => 'required',
+            'neighborhood'       => 'required',
+            'city'       => 'required',
+            'uf'       => 'required',
+            'celphone'       => 'required',
+            'occupation'       => 'required',
+            'marital_status'       => 'required',
+            'phone'       => 'required',
+            'cep'       => 'required',
             'email'      => 'required|email',
+            'birth_date'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -127,6 +154,16 @@ class ClientController extends BaseController
             $client = Client::find($id);
             $client->name       = Input::get('name');
             $client->email      = Input::get('email');
+            $client->address      = Input::get('address');
+            $client->neighborhood      = Input::get('neighborhood');
+            $client->city      = Input::get('city');
+            $client->uf      = Input::get('uf');
+            $client->celphone      = Input::get('celphone');
+            $client->occupation      = Input::get('occupation');
+            $client->marital_status      = Input::get('marital_status');
+            $client->phone      = Input::get('phone');
+            $client->cep      = Input::get('cep');
+            $client->birth_date      = Input::get('birth_date');
             $client->save();
 
             // redirect
@@ -134,7 +171,6 @@ class ClientController extends BaseController
             return Redirect::to('clients');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -146,7 +182,6 @@ class ClientController extends BaseController
         // delete
         $client = Client::find($id);
         $client->delete();
-
         // redirect
         Session::flash('message', 'Successfully deleted the client!');
         return Redirect::to('clients');

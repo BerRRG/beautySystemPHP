@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Client;
-use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Model\Treatment;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class TreatmentController extends BaseController
 {
@@ -18,14 +22,12 @@ class TreatmentController extends BaseController
      */
     public function index()
     {
-        // get all the clients
-        $clients = Treatment::all();
-
-        // load the view and pass the clients
-        return View::make('clients.index')
-            ->with('clients', $clients);
+        // get all the treatments
+        $treatments = Treatment::all();
+        // load the view and pass the treatments
+        return View::make('treatments.index')
+            ->with('treatments', $treatments);
     }
-
     /*
      * Show the form for creating a new resource.
      *
@@ -33,9 +35,8 @@ class TreatmentController extends BaseController
      */
     public function create()
     {
-        return View::make('clients.create');
+        return View::make('treatments.create');
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -47,28 +48,25 @@ class TreatmentController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email'
+            'description'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
-
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('clients/create')
+            return Redirect::to('treatments/create')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $client = new Client;
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->save();
-
+            $treatment = new Treatment;
+            $treatment->name       = Input::get('name');
+            $treatment->description      = Input::get('description');
+            $treatment->save();
             // redirect
-            Session::flash('message', 'Successfully created client!');
-            return Redirect::to('clients');
+            Session::flash('message', 'Successfully created treatment!');
+            return Redirect::to('treatments');
         }
     }
-
     /*
      * Display the specified resource.
      *
@@ -77,14 +75,12 @@ class TreatmentController extends BaseController
      */
     public function show($id)
     {
-        // get the client
-        $client = Treatment::find($id);
-
-        // show the view and pass the client to it
-        return View::make('clients.show')
-            ->with('client', $client);
+        // get the treatment
+        $treatment = Treatment::find($id);
+        // show the view and pass the treatment to it
+        return View::make('treatments.show')
+            ->with('treatment', $treatment);
     }
-
     /*
      * Show the form for editing the specified resource.
      *
@@ -93,14 +89,12 @@ class TreatmentController extends BaseController
      */
     public function edit($id)
     {
-        // get the client
-        $client = Treatment::find($id);
-
-        // show the edit form and pass the client
-        return View::make('clients.edit')
-            ->with('client', $client);
+        // get the treatment
+        $treatment = Treatment::find($id);
+        // show the edit form and pass the treatment
+        return View::make('treatments.edit')
+            ->with('treatment', $treatment);
     }
-
     /*
      * Update the specified resource in storage.
      *
@@ -113,28 +107,25 @@ class TreatmentController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email',
+            'description'      => 'required',
         );
         $validator = Validator::make(Input::all(), $rules);
-
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('clients/' . $id . '/edit')
+            return Redirect::to('treatments/' . $id . '/edit')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $client = Treatment::find($id);
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->save();
-
+            $treatment = Treatment::find($id);
+            $treatment->name       = Input::get('name');
+            $treatment->description      = Input::get('description');
+            $treatment->save();
             // redirect
-            Session::flash('message', 'Successfully updated client!');
-            return Redirect::to('clients');
+            Session::flash('message', 'Successfully updated treatment!');
+            return Redirect::to('treatments');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -144,11 +135,10 @@ class TreatmentController extends BaseController
     public function destroy($id)
     {
         // delete
-        $client = Treatment::find($id);
-        $client->delete();
-
+        $treatment = Treatment::find($id);
+        $treatment->delete();
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
-        return Redirect::to('clients');
+        Session::flash('message', 'Successfully deleted the treatment!');
+        return Redirect::to('treatments');
     }
 }

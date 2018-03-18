@@ -9,15 +9,15 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('clients') }}">BEAUTY SYSTEM</a>
+        <a class="navbar-brand" href="{{ URL::to('professionals') }}">BEAUTY SYSTEM</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clients') }}">CLIENTES</a></li>
-        <li><a href="{{ URL::to('clients/create') }}">Adicionar Cliente</a>
+        <li><a href="{{ URL::to('professionals') }}">Profissionais</a></li>
+        <li><a href="{{ URL::to('professionals/create') }}">Adicionar Profissionais</a>
     </ul>
 </nav>
 
-<h1>Lista de Clientes</h1>
+<h1>Lista de Profissionais</h1>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
@@ -37,7 +37,7 @@
         </tr>
     </thead>
     <tbody>
-    @foreach($clients as $key => $value)
+    @foreach($professionals as $key => $value)
         <tr>
             <td>{{ $value->id }}</td>
             <td>{{ $value->name }}</td>
@@ -49,16 +49,16 @@
             <!-- we will also add show, edit, and delete buttons -->
             <td>
 
-                {{ Form::open(array('url' => 'clients/' . $value->id, 'class' => 'pull-right')) }}
+                {{ Form::open(array('url' => 'professionals/' . $value->id, 'class' => 'pull-right')) }}
                     {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Client', array('class' => 'btn btn-warning')) }}
+                    {{ Form::submit('Delete this Professional', array('class' => 'btn btn-warning')) }}
                 {{ Form::close() }}
 
                
-                <a class="btn btn-small btn-success" href="{{ URL::to('clients/' . $value->id) }}">Show this Client</a>
+                <a class="btn btn-small btn-success" href="{{ URL::to('professionals/' . $value->id) }}">Show this Professional</a>
 
 
-                <a class="btn btn-small btn-info" href="{{ URL::to('clients/' . $value->id . '/edit') }}">Edit this Client</a>
+                <a class="btn btn-small btn-info" href="{{ URL::to('professionals/' . $value->id . '/edit') }}">Edit this Professional</a>
 
             </td>
         </tr>

@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Client;
-use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Model\Clinic;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class ClinicController extends BaseController
 {
@@ -20,12 +24,10 @@ class ClinicController extends BaseController
     {
         // get all the clinics
         $clinics = Clinic::all();
-
         // load the view and pass the clinics
         return View::make('clinics.index')
             ->with('clinics', $clinics);
     }
-
     /*
      * Show the form for creating a new resource.
      *
@@ -35,7 +37,6 @@ class ClinicController extends BaseController
     {
         return View::make('clinics.create');
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -47,10 +48,8 @@ class ClinicController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email'
         );
         $validator = Validator::make(Input::all(), $rules);
-
         // process the login
         if ($validator->fails()) {
             return Redirect::to('clinics/create')
@@ -60,15 +59,12 @@ class ClinicController extends BaseController
             // store
             $clinic = new Clinic;
             $clinic->name       = Input::get('name');
-            $clinic->email      = Input::get('email');
             $clinic->save();
-
             // redirect
-            Session::flash('message', 'Successfully created client!');
+            Session::flash('message', 'Successfully created clinic!');
             return Redirect::to('clinics');
         }
     }
-
     /*
      * Display the specified resource.
      *
@@ -77,14 +73,11 @@ class ClinicController extends BaseController
      */
     public function show($id)
     {
-        // get the client
         $clinic = Clinic::find($id);
 
-        // show the view and pass the client to it
         return View::make('clinics.show')
-            ->with('client', $clinic);
+            ->with('clinic', $clinic);
     }
-
     /*
      * Show the form for editing the specified resource.
      *
@@ -93,14 +86,11 @@ class ClinicController extends BaseController
      */
     public function edit($id)
     {
-        // get the client
         $clinic = Clinic::find($id);
 
-        // show the edit form and pass the client
         return View::make('clinics.edit')
-            ->with('client', $clinic);
+            ->with('clinic', $clinic);
     }
-
     /*
      * Update the specified resource in storage.
      *
@@ -109,15 +99,11 @@ class ClinicController extends BaseController
      */
     public function update($id)
     {
-        // validate
-        // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email',
         );
         $validator = Validator::make(Input::all(), $rules);
 
-        // process the login
         if ($validator->fails()) {
             return Redirect::to('clinics/' . $id . '/edit')
                 ->withErrors($validator)
@@ -126,15 +112,12 @@ class ClinicController extends BaseController
             // store
             $clinic = Clinic::find($id);
             $clinic->name       = Input::get('name');
-            $clinic->email      = Input::get('email');
             $clinic->save();
-
             // redirect
-            Session::flash('message', 'Successfully updated client!');
+            Session::flash('message', 'Successfully updated clinic!');
             return Redirect::to('clinics');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -146,9 +129,8 @@ class ClinicController extends BaseController
         // delete
         $clinic = Clinic::find($id);
         $clinic->delete();
-
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
+        Session::flash('message', 'Successfully deleted the clinic!');
         return Redirect::to('clinics');
     }
 }

@@ -9,20 +9,20 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('clients') }}">Client</a>
+        <a class="navbar-brand" href="{{ URL::to('professionals') }}">Professional</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clients') }}">View All Clients</a></li>
-        <li><a href="{{ URL::to('clients/create') }}">Create a Client</a>
+        <li><a href="{{ URL::to('professionals') }}">View All Professionals</a></li>
+        <li><a href="{{ URL::to('professionals/create') }}">Create a Professional</a>
     </ul>
 </nav>
 
-<h1>Showing {{ $client->name }}</h1>
+<h1>Showing {{ $professional->name }}</h1>
 
     <div class="jumbotron text-center">
-        <h2>{{ $client->name }}</h2>
+        <h2>{{ $professional->name }}</h2>
         <p>
-            <strong>Email:</strong> {{ $client->email }}<br>
+            <strong>Email:</strong> {{ $professional->email }}<br>
         </p>
     </div>
 

@@ -9,20 +9,20 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('treatments') }}">Treatment</a>
+        <a class="navbar-brand" href="{{ URL::to('clients') }}">Client</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('treatments') }}">View All Treatments</a></li>
-        <li><a href="{{ URL::to('treatments/create') }}">Create a Treatment</a>
+        <li><a href="{{ URL::to('clients') }}">View All Clients</a></li>
+        <li><a href="{{ URL::to('clients/create') }}">Create a Client</a>
     </ul>
 </nav>
 
-<h1>Showing {{ $treatment->name }}</h1>
+<h1>Showing {{ $client->name }}</h1>
 
     <div class="jumbotron text-center">
-        <h2>{{ $treatment->name }}</h2>
+        <h2>{{ $client->name }}</h2>
         <p>
-            <strong>Descrição:</strong> {{ $treatment->description }}<br>
+            <strong>Email:</strong> {{ $client->email }}<br>
         </p>
     </div>
 

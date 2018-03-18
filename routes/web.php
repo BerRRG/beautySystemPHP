@@ -19,3 +19,9 @@ Route::get('/', function () {
 Route::get('/user', 'UserController@index');
 
 Route::resource('clients', 'ClientController');
+
+Route::resource('clinics', 'ClinicController');
+
+Route::resource('professionals', 'ProfessionalController');
+
+Route::resource('treatments', 'TreatmentController');

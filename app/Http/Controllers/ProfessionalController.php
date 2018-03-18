@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Model\Client;
-use Illuminate\Support\Facades\View;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use App\Model\Professional;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class ProfessionalController extends BaseController
 {
@@ -18,14 +22,11 @@ class ProfessionalController extends BaseController
      */
     public function index()
     {
-        // get all the clients
-        $clients = Professional::all();
+        $professionals = Professional::all();
 
-        // load the view and pass the clients
-        return View::make('clients.index')
-            ->with('clients', $clients);
+        return View::make('professionals.index')
+            ->with('professionals', $professionals);
     }
-
     /*
      * Show the form for creating a new resource.
      *
@@ -33,9 +34,8 @@ class ProfessionalController extends BaseController
      */
     public function create()
     {
-        return View::make('clients.create');
+        return View::make('professionals.create');
     }
-
     /*
      * Store a newly created resource in storage.
      *
@@ -47,28 +47,45 @@ class ProfessionalController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
-            'email'      => 'required|email'
+            'address'       => 'required',
+            'neighborhood'       => 'required',
+            'city'       => 'required',
+            'uf'       => 'required',
+            'celphone'       => 'required',
+            'occupation'       => 'required',
+            'marital_status'       => 'required',
+            'phone'       => 'required',
+            'cep'       => 'required',
+            'email'      => 'required|email',
+            'birth_date'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
-
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('clients/create')
+            return Redirect::to('professionals/create')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $client = new Client;
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->save();
-
+            $professional = new Professional;
+            $professional->name       = Input::get('name');
+            $professional->email      = Input::get('email');
+            $professional->address      = Input::get('address');
+            $professional->neighborhood      = Input::get('neighborhood');
+            $professional->city      = Input::get('city');
+            $professional->uf      = Input::get('uf');
+            $professional->celphone      = Input::get('celphone');
+            $professional->occupation      = Input::get('occupation');
+            $professional->marital_status      = Input::get('marital_status');
+            $professional->phone      = Input::get('phone');
+            $professional->cep      = Input::get('cep');
+            $professional->birth_date      = Input::get('birth_date');;
+            $professional->save();
             // redirect
-            Session::flash('message', 'Successfully created client!');
-            return Redirect::to('clients');
+            Session::flash('message', 'Successfully created professional!');
+            return Redirect::to('professionals');
         }
     }
-
     /*
      * Display the specified resource.
      *
@@ -77,14 +94,11 @@ class ProfessionalController extends BaseController
      */
     public function show($id)
     {
-        // get the client
-        $client = Professional::find($id);
+        $professional = Professional::find($id);
 
-        // show the view and pass the client to it
-        return View::make('clients.show')
-            ->with('client', $client);
+        return View::make('professionals.show')
+            ->with('professional', $professional);
     }
-
     /*
      * Show the form for editing the specified resource.
      *
@@ -93,14 +107,12 @@ class ProfessionalController extends BaseController
      */
     public function edit($id)
     {
-        // get the client
-        $client = Professional::find($id);
 
-        // show the edit form and pass the client
-        return View::make('clients.edit')
-            ->with('client', $client);
+        $professional = Professional::find($id);
+
+        return View::make('professionals.edit')
+            ->with('professional', $professional);
     }
-
     /*
      * Update the specified resource in storage.
      *
@@ -113,28 +125,45 @@ class ProfessionalController extends BaseController
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
             'name'       => 'required',
+            'address'       => 'required',
+            'neighborhood'       => 'required',
+            'city'       => 'required',
+            'uf'       => 'required',
+            'celphone'       => 'required',
+            'occupation'       => 'required',
+            'marital_status'       => 'required',
+            'phone'       => 'required',
+            'cep'       => 'required',
             'email'      => 'required|email',
+            'birth_date'      => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
-
         // process the login
         if ($validator->fails()) {
-            return Redirect::to('clients/' . $id . '/edit')
+            return Redirect::to('professionals/' . $id . '/edit')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
             // store
-            $client = Professional::find($id);
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->save();
-
+            $professional = Professional::find($id);
+            $professional->name       = Input::get('name');
+            $professional->email      = Input::get('email');
+            $professional->address      = Input::get('address');
+            $professional->neighborhood      = Input::get('neighborhood');
+            $professional->city      = Input::get('city');
+            $professional->uf      = Input::get('uf');
+            $professional->celphone      = Input::get('celphone');
+            $professional->occupation      = Input::get('occupation');
+            $professional->marital_status      = Input::get('marital_status');
+            $professional->phone      = Input::get('phone');
+            $professional->cep      = Input::get('cep');
+            $professional->birth_date      = Input::get('birth_date');;
+            $professional->save();
             // redirect
-            Session::flash('message', 'Successfully updated client!');
-            return Redirect::to('clients');
+            Session::flash('message', 'Successfully updated professional!');
+            return Redirect::to('professionals');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -144,11 +173,10 @@ class ProfessionalController extends BaseController
     public function destroy($id)
     {
         // delete
-        $client = Professional::find($id);
-        $client->delete();
-
+        $professional = Professional::find($id);
+        $professional->delete();
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
-        return Redirect::to('clients');
+        Session::flash('message', 'Successfully deleted the professional!');
+        return Redirect::to('professionals');
     }
 }

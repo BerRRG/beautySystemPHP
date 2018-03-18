@@ -9,20 +9,20 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('clients') }}">Client Alert</a>
+        <a class="navbar-brand" href="{{ URL::to('treatments') }}">Treatment Alert</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clients') }}">View All Clients</a></li>
-        <li><a href="{{ URL::to('clients/create') }}">Create a Client</a>
+        <li><a href="{{ URL::to('treatments') }}">View All Treatments</a></li>
+        <li><a href="{{ URL::to('treatments/create') }}">Create a Treatment</a>
     </ul>
 </nav>
 
-<h1>Create a Client</h1>
+<h1>Create a Treatment</h1>
 
 <!-- if there are creation errors, they will show here -->
-{{ HTML::ul($errors->all()) }}
+{{ Html::ul($errors->all()) }}
 
-{{ Form::open(array('url' => 'clients')) }}
+{{ Form::open(array('url' => 'treatments')) }}
 
     <div class="form-group">
         {{ Form::label('name', 'Name') }}
@@ -30,11 +30,11 @@
     </div>
 
     <div class="form-group">
-        {{ Form::label('email', 'Email') }}
-        {{ Form::email('email', Input::old('email'), array('class' => 'form-control')) }}
+        {{ Form::label('description', 'Descrição') }}
+        {{ Form::text('description', Input::old('description'), array('class' => 'form-control')) }}
     </div>
 
-    {{ Form::submit('Create the Client!', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Create the Treatment!', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 
