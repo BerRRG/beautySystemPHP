@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Beauty System</title>
+    <title>Lista de Tratamentos</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,11 +9,11 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('treatments') }}">BEAUTY SYSTEM</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('treatments') }}">Tratamentos</a></li>
-        <li><a href="{{ URL::to('treatments/create') }}">Adicionar Tratamento</a>
+        <li><a href="{{ URL::to('treatments') }}">Listar tratamentos</a></li>
+        <li><a href="{{ URL::to('treatments/create') }}">Adicionar tratamento</a>
     </ul>
 </nav>
 
@@ -29,7 +29,7 @@
         <tr>
             <td>ID</td>
             <td>Nome</td>
-            <td>Descrição</td>
+            <td>Ações</td>
         </tr>
     </thead>
     <tbody>
@@ -37,22 +37,20 @@
         <tr>
             <td>{{ $value->id }}</td>
             <td>{{ $value->name }}</td>
-            <td>{{ $value->description }}</td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>
-
-                {{ Form::open(array('url' => 'treatments/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Treatment', array('class' => 'btn btn-warning')) }}
-                {{ Form::close() }}
-
-               
-                <a class="btn btn-small btn-success" href="{{ URL::to('treatments/' . $value->id) }}">Show this Treatment</a>
+                <div class="pull-right">
+                    <a class="btn btn-small btn-success" href="{{ URL::to('treatments/' . $value->id) }}">Detalhar</a>
 
 
-                <a class="btn btn-small btn-info" href="{{ URL::to('treatments/' . $value->id . '/edit') }}">Edit this Treatment</a>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('treatments/' . $value->id . '/edit') }}">Editar</a>
 
+                    {{ Form::open(array('url' => 'treatments/' . $value->id, 'class' => 'btn')) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Apagar', array('class' => 'btn btn-warning')) }}
+                    {{ Form::close() }}
+                </div>
             </td>
         </tr>
     @endforeach

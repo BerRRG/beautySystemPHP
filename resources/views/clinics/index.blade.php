@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Beauty System</title>
+    <title>Lista de Consultórios</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,11 +9,11 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('clinics') }}">BEAUTY SYSTEM</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clinics') }}">Consultorios</a></li>
-        <li><a href="{{ URL::to('clinics/create') }}">Adicionar Consultorio</a>
+        <li><a href="{{ URL::to('clinics') }}">Listar consultórios</a></li>
+        <li><a href="{{ URL::to('clinics/create') }}">Adicionar consultório</a>
     </ul>
 </nav>
 
@@ -39,18 +39,18 @@
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>
-
-                {{ Form::open(array('url' => 'clinics/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Clinic', array('class' => 'btn btn-warning')) }}
-                {{ Form::close() }}
-
-               
-                <a class="btn btn-small btn-success" href="{{ URL::to('clinics/' . $value->id) }}">Show this Clinic</a>
+                <div class="pull-right">
+                    <a class=" btn btn-small btn-success" href="{{ URL::to('clinics/' . $value->id) }}">Detalhar</a>
 
 
-                <a class="btn btn-small btn-info" href="{{ URL::to('clinics/' . $value->id . '/edit') }}">Edit this Clinic</a>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('clinics/' . $value->id . '/edit') }}">Editar</a>
 
+
+                    {{ Form::open(array('url' => 'clinics/' . $value->id, 'class' => 'btn')) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Apagar', array('class' => 'btn btn-warning')) }}
+                    {{ Form::close() }}
+                </div>
             </td>
         </tr>
     @endforeach

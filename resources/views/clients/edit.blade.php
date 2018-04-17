@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Client</title>
+    <title>Editar Cliente</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,15 +9,15 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('clients') }}">Client</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clients') }}">View All Clients</a></li>
-        <li><a href="{{ URL::to('clients/create') }}">Create a Client</a>
+        <li><a href="{{ URL::to('clients') }}">Listar clientes</a></li>
+        <li><a href="{{ URL::to('clients/create') }}">Adicionar cliente</a>
     </ul>
 </nav>
 
-<h1>Edit {{ $client->name }}</h1>
+<h1>Editar cliente:  {{ $client->name }}</h1>
 
 <!-- if there are creation errors, they will show here -->
 {{ Html::ul($errors->all()) }}
@@ -84,7 +84,7 @@
         {{ Form::text('marital_status', null, array('class' => 'form-control')) }}
     </div>
 
-    {{ Form::submit('Edit the Client!', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Inserir alterações', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 
