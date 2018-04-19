@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Beauty System</title>
+    <title>Lista de Profissionais</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,11 +9,11 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('professionals') }}">BEAUTY SYSTEM</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('professionals') }}">Profissionais</a></li>
-        <li><a href="{{ URL::to('professionals/create') }}">Adicionar Profissionais</a>
+        <li><a href="{{ URL::to('professionals') }}">Listar profissionais</a></li>
+        <li><a href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
     </ul>
 </nav>
 
@@ -30,10 +30,9 @@
             <td>ID</td>
             <td>Nome</td>
             <td>Email</td>
-            <td>Endereço</td>
             <td>Telefone</td>
             <td>Celular</td>
-            <td>Actions</td>
+            <td>Ações</td>
         </tr>
     </thead>
     <tbody>
@@ -42,24 +41,22 @@
             <td>{{ $value->id }}</td>
             <td>{{ $value->name }}</td>
             <td>{{ $value->email }}</td>
-            <td>{{ $value->address }}</td>
             <td>{{ $value->phone }}</td>
             <td>{{ $value->celphone }}</td>
 
             <!-- we will also add show, edit, and delete buttons -->
             <td>
-
-                {{ Form::open(array('url' => 'professionals/' . $value->id, 'class' => 'pull-right')) }}
-                    {{ Form::hidden('_method', 'DELETE') }}
-                    {{ Form::submit('Delete this Professional', array('class' => 'btn btn-warning')) }}
-                {{ Form::close() }}
-
-               
-                <a class="btn btn-small btn-success" href="{{ URL::to('professionals/' . $value->id) }}">Show this Professional</a>
+                <div class="pull-right">
+                    <a class="btn btn-small btn-success" href="{{ URL::to('professionals/' . $value->id) }}">Detalhar</a>
 
 
-                <a class="btn btn-small btn-info" href="{{ URL::to('professionals/' . $value->id . '/edit') }}">Edit this Professional</a>
+                    <a class="btn btn-small btn-info" href="{{ URL::to('professionals/' . $value->id . '/edit') }}">Editar</a>
 
+                    {{ Form::open(array('url' => 'professionals/' . $value->id, 'class' => 'btn')) }}
+                        {{ Form::hidden('_method', 'DELETE') }}
+                        {{ Form::submit('Apagar', array('class' => 'btn btn-warning')) }}
+                    {{ Form::close() }}
+                </div>
             </td>
         </tr>
     @endforeach

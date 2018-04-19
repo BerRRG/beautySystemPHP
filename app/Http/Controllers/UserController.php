@@ -11,6 +11,6 @@ class UserController extends BaseController
 {
     public function index()
     {
-    	dd("hello world");
+    	dd('TELA DE LOGIN');
     }
 }

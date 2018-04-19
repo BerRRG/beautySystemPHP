@@ -25,5 +25,3 @@ Route::resource('clinics', 'ClinicController');
 Route::resource('professionals', 'ProfessionalController');
 
 Route::resource('treatments', 'TreatmentController');
-
-Route::resource('diseases', 'DiseasesController');

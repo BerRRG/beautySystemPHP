@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Professional</title>
+    <title>Editar Profissional</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,11 +9,11 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('professionals') }}">Professional</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('professionals') }}">View All Professionals</a></li>
-        <li><a href="{{ URL::to('professionals/create') }}">Create a Professional</a>
+        <li><a href="{{ URL::to('professionals') }}">Listar profissionais</a></li>
+        <li><a href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
     </ul>
 </nav>
 
@@ -84,10 +84,11 @@
         {{ Form::text('marital_status', null, array('class' => 'form-control')) }}
     </div>
 
-    {{ Form::submit('Edit the Professional!', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Inserir alterações', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 
+<br/>
 </div>
 </body>
 </html>

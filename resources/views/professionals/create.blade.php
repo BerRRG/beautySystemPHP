@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create</title>
+    <title>Cadastrar Profissional</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -9,15 +9,15 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('professionals') }}">Professional Alert</a>
+        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('professionals') }}">View All Professionals</a></li>
-        <li><a href="{{ URL::to('professionals/create') }}">Create a Professional</a>
+        <li><a href="{{ URL::to('professionals') }}">Listar profissionais</a></li>
+        <li><a href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
     </ul>
 </nav>
 
-<h1>Create a Professional</h1>
+<h1>Cadastro de Profissional</h1>
 
 <!-- if there are creation errors, they will show here -->
 {{ Html::ul($errors->all()) }}
@@ -25,7 +25,7 @@
 {{ Form::open(array('url' => 'professionals')) }}
 
     <div class="form-group">
-        {{ Form::label('name', 'Name') }}
+        {{ Form::label('name', 'Nome') }}
         {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
     </div>
 
@@ -75,7 +75,7 @@
     </div>
 
     <div class="form-group">
-        {{ Form::label('occupation', 'Trabalho') }}
+        {{ Form::label('occupation', 'Especialidade') }}
         {{ Form::text('occupation', null, array('class' => 'form-control')) }}
     </div>
 
@@ -85,10 +85,11 @@
     </div>
 
 
-    {{ Form::submit('Create the Professional!', array('class' => 'btn btn-primary')) }}
+    {{ Form::submit('Inserir', array('class' => 'btn btn-primary')) }}
 
 {{ Form::close() }}
 
+<br/>
 </div>
 </body>
 </html>
