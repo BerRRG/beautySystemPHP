@@ -35,7 +35,8 @@
 
     <div class="form-group">
         {{ Form::label('birth_date', 'Data de nascimento') }}
-        {{ Form::text('birth_date', null, array('class' => 'form-control')) }}
+        {{ Form::date('birth_date', null, array('class' => 'form-control', 'placeholder' => 'Ex.: dd/mm/aaaa','data-mask' => '00/00/0000')) }}
+	
     </div>
 
     <div class="form-group">
@@ -45,7 +46,7 @@
 
      <div class="form-group">
         {{ Form::label('cep', 'CEP') }}
-        {{ Form::text('cep', null, array('class' => 'form-control')) }}
+        {{ Form::text('cep', null, array('class' => 'form-control', 'placeholder' => 'Ex.: 00000-000', 'data-mask' => '00000-000')) }}
     </div>
 
     <div class="form-group">
@@ -65,7 +66,7 @@
 
     <div class="form-group">
         {{ Form::label('phone', 'Telefone') }}
-        {{ Form::text('phone', null, array('class' => 'form-control')) }}
+        {{ Form::text('phone', null, array('class' => 'form-control', 'placeholder' => 'Ex.:(00)0000-0000','data-mask' => '(00)0000-0000')) }}
     </div>
 
     <div class="form-group">
