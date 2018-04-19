@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>BEAUTY SYSTEM</title>
+        <link rel="shortcut icon" href="{{{ asset('Logo-PNG.png') }}}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -13,8 +14,8 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
+                background-color: #3f0000 ;
+                color: #fff;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -50,7 +51,7 @@
             }
 
             .links > a {
-                color: #636b6f;
+                color: #fff;
                 padding: 0 25px;
                 font-size: 12px;
                 font-weight: 600;
@@ -61,6 +62,13 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+
+            img{
+                width: 300px;
+                height: 200px;
+                margin-left: auto;
+                margin-right: auto;
             }
         </style>
     </head>
@@ -77,10 +85,13 @@
                 </div>
             @endif
 
+
             <div class="content">
+                <!-- <img src="{{ URL::to('/') }}/Logo-PNG.png"/> -->
                 <div class="title m-b-md">
                     BEAUTY SYSTEM
                 </div>
+		
 
                 <div class="links">
                     <a href="clients">Clientes</a>
