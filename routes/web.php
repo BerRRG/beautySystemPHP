@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('/calendario', 'CalendarController');
+Route::post('events', 'CalendarController@addEvent')->name('events.add');
 
 Route::get('/user', 'UserController@index');
 
