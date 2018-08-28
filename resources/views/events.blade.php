@@ -46,6 +46,8 @@
                   <div class="">
                   {!! Form::date('start_date', null, ['class' => 'form-control']) !!}
                   {!! $errors->first('start_date', '<p class="alert alert-danger">:message</p>') !!}
+                  {!! Form::time('start_time',null, ['class' => 'form-control']) !!}
+                  {!! $errors->first('start_time', '<p class="alert alert-danger">:message</p>') !!}
                   </div>
                 </div>
               </div>
@@ -55,6 +57,8 @@
                   <div class="">
                   {!! Form::date('end_date', null, ['class' => 'form-control']) !!}
                   {!! $errors->first('end_date', '<p class="alert alert-danger">:message</p>') !!}
+                  {!! Form::time('end_time',null, ['class' => 'form-control']) !!}
+                  {!! $errors->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
                   </div>
                 </div>
               </div>
@@ -71,4 +75,4 @@
           {!! $calendar_details->calendar() !!}
       </div>
     </div>
-    </div>  
+    </div>

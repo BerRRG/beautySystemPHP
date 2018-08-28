@@ -18,9 +18,9 @@ class CalendarController extends Controller
     	foreach ($events as $key => $event) {
     		$event_list[] = Calendar::event(
                 $event->event_name,
-                true,
+                false,
                 new \DateTime($event->start_date),
-                new \DateTime($event->end_date.' +1 day')
+                new \DateTime($event->end_date)
             );
     	}
     	$calendar_details = Calendar::addEvents($event_list);
@@ -33,7 +33,9 @@ class CalendarController extends Controller
         $validator = Validator::make($request->all(), [
             'event_name' => 'required',
             'start_date' => 'required',
-            'end_date' => 'required'
+            'end_date' => 'required',
+            'end_time' => 'required',
+            'start_time' => 'required',
         ]);
 
         if ($validator->fails()) {

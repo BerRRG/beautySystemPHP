@@ -14,6 +14,8 @@
     <ul class="nav navbar-nav">
         <li><a href="{{ URL::to('clients') }}">Listar clientes</a></li>
         <li><a href="{{ URL::to('clients/create') }}">Adicionar cliente</a>
+    </ul>
+</nav>
 
 
 <h1>Cadastro de Clientes</h1>
