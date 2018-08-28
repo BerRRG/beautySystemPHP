@@ -7,9 +7,7 @@
     </ul>
 </nav>
 
-<h1>Calendario</h1>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-
 
 <!-- Scripts -->
 <script src="http://code.jquery.com/jquery.js"></script>
