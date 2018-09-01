@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Event;
 use Illuminate\Database\Eloquent\Model;
 
 class Professional extends Model
@@ -10,4 +11,10 @@ class Professional extends Model
     {
         return $this->belongsToMany(Treatment::class);
     }
+
+    public function events()
+    {
+        return $this->hasMany(Event::class, 'professional_id', 'id');
+    }
+
 }

@@ -28,6 +28,7 @@ class ClientController extends BaseController
         return View::make('clients.index')
             ->with('clients', $clients);
     }
+
     /*
      * Show the form for creating a new resource.
      *

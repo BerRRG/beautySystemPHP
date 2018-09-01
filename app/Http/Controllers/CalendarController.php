@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\Controller;
 use App\Model\Calendar as CalendarModel;
+use App\Model\Client;
+use App\Model\Clinic;
+use App\Model\Professional;
 use Auth;
 use Calendar;
 use Validator;
@@ -18,24 +21,41 @@ class CalendarController extends Controller
     	foreach ($events as $key => $event) {
     		$event_list[] = Calendar::event(
                 $event->event_name,
-                false,
+                $event->full_day,
                 new \DateTime($event->start_date),
                 new \DateTime($event->end_date)
             );
     	}
     	$calendar_details = Calendar::addEvents($event_list);
 
-        return view('events', compact('calendar_details') );
+        $clients = Client::all()->pluck('name', 'id')->toArray();
+        $clinics = Clinic::all()->pluck('name', 'id')->toArray();
+        $professionals = Professional::all()->pluck('name', 'id')->toArray();
+
+        return view('events', compact('calendar_details'))
+        ->withClients($clients)
+        ->withClinics($clinics)
+        ->withProfessionals($professionals);
     }
 
     public function addEvent(Request $request)
     {
+        $client = Client::find($request->input('client_id'));
+        $professional = Professional::find($request->input('professional_id'));
+        $clinic = Clinic::find($request->input('clinic_id'));
+
+        $eventName = $client->name.' - '.$clinic->name;
+        $start = $request->input('start_date').' '.$request->input('start_time');
+        $end = $request->input('end_date').' '.$request->input('end_time');
+
         $validator = Validator::make($request->all(), [
-            'event_name' => 'required',
             'start_date' => 'required',
             'end_date' => 'required',
             'end_time' => 'required',
             'start_time' => 'required',
+            'clinic_id' => 'required',
+            'client_id' => 'required',
+            'professional_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -44,9 +64,12 @@ class CalendarController extends Controller
         }
 
         $event = new CalendarModel;
-        $event->event_name = $request['event_name'];
-        $event->start_date = $request['start_date'];
-        $event->end_date = $request['end_date'];
+        $event->clinic_id = $clinic->id;
+        $event->client_id = $client->id;
+        $event->professional_id = $professional->id;
+        $event->event_name = $eventName;
+        $event->start_date = $start;
+        $event->end_date = $end;
         $event->save();
 
         \Session::flash('success','CalendarModel added successfully.');

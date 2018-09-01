@@ -31,10 +31,9 @@
               </div>
               <div class="col-xs-4 col-sm-4 col-md-4">
                 <div class="form-group">
-                    {!! Form::label('event_name','Event Name:') !!}
                     <div class="">
-                    {!! Form::text('event_name', null, ['class' => 'form-control']) !!}
-                    {!! $errors->first('event_name', '<p class="alert alert-danger">:message</p>') !!}
+                    {!! Form::label('full_day','Dia Inteiro:') !!}
+                    {!! Form::checkbox('full_day', 1) !!}
                     </div>
                 </div>
               </div>
@@ -59,6 +58,18 @@
                   {!! $errors->first('end_time', '<p class="alert alert-danger">:message</p>') !!}
                   </div>
                 </div>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                {!! Form::label('client_id','Clientes:') !!}
+                {!! Form::select('client_id', $clients, [], ['class' => 'form-control']) !!}
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                {!! Form::label('professional_id','Profissionais:') !!}
+                {!! Form::select('professional_id', $professionals, [], ['class' => 'form-control']) !!}
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3">
+                {!! Form::label('clinic_id','Sala:') !!}
+                {!! Form::select('clinic_id', $clinics, [], ['class' => 'form-control']) !!}
               </div>
               <div class="col-xs-1 col-sm-1 col-md-1 text-center"> &nbsp;<br/>
               {!! Form::submit('Add Event',['class'=>'btn btn-primary']) !!}
