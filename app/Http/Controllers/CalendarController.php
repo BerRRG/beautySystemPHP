@@ -44,9 +44,6 @@ class CalendarController extends Controller
         $professional = Professional::find($request->input('professional_id'));
         $clinic = Clinic::find($request->input('clinic_id'));
 
-        $eventName = $client->name.' - '.$clinic->name;
-        $start = $request->input('start_date').' '.$request->input('start_time');
-        $end = $request->input('end_date').' '.$request->input('end_time');
 
         $validator = Validator::make($request->all(), [
             'start_date' => 'required',
@@ -58,10 +55,15 @@ class CalendarController extends Controller
             'professional_id' => 'required',
         ]);
 
+
         if ($validator->fails()) {
-        	\Session::flash('warnning','Please enter the valid details');
+        	\Session::flash('warnning','Favor preencher os campos');
             return Redirect::to('/calendario')->withInput()->withErrors($validator);
         }
+
+        $eventName = $client->name.' - '.$clinic->name;
+        $start = $request->input('start_date').' '.$request->input('start_time');
+        $end = $request->input('end_date').' '.$request->input('end_time');
 
         $event = new CalendarModel;
         $event->clinic_id = $clinic->id;
@@ -72,7 +74,7 @@ class CalendarController extends Controller
         $event->end_date = $end;
         $event->save();
 
-        \Session::flash('success','CalendarModel added successfully.');
+        \Session::flash('success','Cadastrado com sucesso!');
         return Redirect::to('/calendario');
     }
 
