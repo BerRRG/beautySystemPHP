@@ -10,6 +10,7 @@ use App\Model\Client;
 use App\Model\Clinic;
 use App\Model\Professional;
 use App\Model\Treatment;
+use Carbon\Carbon;
 use Auth;
 use Calendar;
 use Validator;
@@ -59,7 +60,6 @@ class CalendarController extends Controller
             'treatment_id' => 'required',
         ]);
 
-
         if ($validator->fails()) {
         	\Session::flash('warnning','Favor preencher os campos');
             return Redirect::to('/calendario')->withInput()->withErrors($validator);
@@ -68,6 +68,20 @@ class CalendarController extends Controller
         $eventName = $client->name.' - '.$clinic->name;
         $start = $request->input('start_date').' '.$request->input('start_time');
         $end = $request->input('end_date').' '.$request->input('end_time');
+
+
+        if ($request->input('repeat')) {
+            $this->addEventWeek(
+                $request,
+                $eventName,
+                $start,
+                $end,
+                $clinic,
+                $client,
+                $professional,
+                $treatment
+            );
+        }
 
         $event = new CalendarModel;
         $event->clinic_id = $clinic->id;
@@ -83,5 +97,21 @@ class CalendarController extends Controller
         return Redirect::to('/calendario');
     }
 
+    protected function addEventWeek($request, $eventName, $start, $end, $clinic, $client, $professional, $treatment)
+    {
+        $i = 1;
 
+        while($i <= $request->input('repeat')) {
+            $event = new CalendarModel;
+            $event->clinic_id = $clinic->id;
+            $event->client_id = $client->id;
+            $event->professional_id = $professional->id;
+            $event->treatment_id = $treatment->id;
+            $event->event_name = $eventName;
+            $event->start_date = (new Carbon($start))->addWeeks($i);
+            $event->end_date = (new Carbon($end))->addWeeks($i);
+            $event->save();
+            $i++;
+        }
+    }
 }

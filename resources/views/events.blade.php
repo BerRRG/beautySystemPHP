@@ -1,15 +1,6 @@
 <body background="https://i.ytimg.com/vi/szDwAEeGBrI/maxresdefault.jpg">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/clients') }}">Clientes</a>
-        <a class="navbar-brand" href="{{ URL::to('/clinics') }}">Consultorios</a>
-        <a class="navbar-brand" href="{{ URL::to('/professionals') }}">Profissionais</a>
-        <a class="navbar-brand" href="{{ URL::to('/treatments') }}">Tratamentos</a>
-    </div>
-    <ul class="nav navbar-nav">
-    </ul>
-</nav>
+@include('nav');
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
 
@@ -33,12 +24,18 @@
                       <div class="alert alert-danger">{{ Session::get('warnning') }}</div>
                   @endif
               </div>
-              <div class="col-xs-4 col-sm-4 col-md-4">
+              <div class="col-xs-4 col-sm-4 col-md-1">
                 <div class="form-group">
                     <div class="">
                     {!! Form::label('full_day','Dia Inteiro:') !!}
                     {!! Form::checkbox('full_day', 1) !!}
                     </div>
+                </div>
+              </div>
+              <div class="col-xs-4 col-sm-4 col-md-2">
+                <div class="form-group">
+                    {{ Form::label('repeat', 'Repetir quantas semanas') }}
+                    {{Form::number('repeat', null, ['class' => 'form-control'])}}
                 </div>
               </div>
               <div class="col-xs-3 col-sm-3 col-md-3">
