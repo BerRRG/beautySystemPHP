@@ -9,6 +9,7 @@ use App\Model\Calendar as CalendarModel;
 use App\Model\Client;
 use App\Model\Clinic;
 use App\Model\Professional;
+use App\Model\Treatment;
 use Auth;
 use Calendar;
 use Validator;
@@ -31,9 +32,11 @@ class CalendarController extends Controller
         $clients = Client::all()->pluck('name', 'id')->toArray();
         $clinics = Clinic::all()->pluck('name', 'id')->toArray();
         $professionals = Professional::all()->pluck('name', 'id')->toArray();
+        $treatments = Treatment::all()->pluck('name', 'id')->toArray();
 
         return view('events', compact('calendar_details'))
         ->withClients($clients)
+        ->withTreatments($treatments)
         ->withClinics($clinics)
         ->withProfessionals($professionals);
     }
@@ -43,7 +46,7 @@ class CalendarController extends Controller
         $client = Client::find($request->input('client_id'));
         $professional = Professional::find($request->input('professional_id'));
         $clinic = Clinic::find($request->input('clinic_id'));
-
+        $treatment = Treatment::find($request->input('treatment_id'));
 
         $validator = Validator::make($request->all(), [
             'start_date' => 'required',
@@ -53,6 +56,7 @@ class CalendarController extends Controller
             'clinic_id' => 'required',
             'client_id' => 'required',
             'professional_id' => 'required',
+            'treatment_id' => 'required',
         ]);
 
 
@@ -69,6 +73,7 @@ class CalendarController extends Controller
         $event->clinic_id = $clinic->id;
         $event->client_id = $client->id;
         $event->professional_id = $professional->id;
+        $event->treatment_id = $treatment->id;
         $event->event_name = $eventName;
         $event->start_date = $start;
         $event->end_date = $end;

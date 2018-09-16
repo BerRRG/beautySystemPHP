@@ -18,6 +18,7 @@ class CreateCalendarsTable extends Migration
             $table->integer('client_id')->unsigned()->nullable();
             $table->integer('professional_id')->unsigned()->nullable();
             $table->integer('clinic_id')->unsigned()->nullable();
+            $table->integer('treatment_id')->unsigned()->nullable();
             $table->timestamps();
             $table->string('event_name');
             $table->dateTime('start_date');
@@ -25,6 +26,7 @@ class CreateCalendarsTable extends Migration
             $table->boolean('full_day')->default(false);
             $table->foreign('client_id')->references('id')->on('clients');
             $table->foreign('clinic_id')->references('id')->on('clinics');
+            $table->foreign('treatment_id')->references('id')->on('treatments');
             $table->foreign('professional_id')->references('id')->on('professionals');
         });
     }
