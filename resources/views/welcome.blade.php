@@ -87,6 +87,7 @@
                     <a href="clinics">Consultórios</a>
                     <a href="professionals">Profissionais</a>
                     <a href="treatments">Tratamentos</a>
+                    <a href="calendario">Calendário</a>
                 </div>
             </div>
         </div>
