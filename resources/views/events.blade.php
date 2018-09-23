@@ -64,7 +64,7 @@
               <div class="col-xs-3 col-sm-3 col-md-3">
                 {!! Form::label('treatment_id','Tratamentos:') !!}
                 {!! Form::select('treatment_id', $treatments, [], ['class' => 'form-control']) !!}
-                 {!! $errors->first('treatment_id', '<p class="alert alert-danger">:message</p>') !!}
+                {!! $errors->first('treatment_id', '<p class="alert alert-danger">:message</p>') !!}
               </div>
 
               <div class="col-xs-3 col-sm-3 col-md-3">

@@ -11,7 +11,7 @@
 |
 */
 
-Route::resource('/', 'CalendarController');
+Route::get('/', 'CalendarController@showCalendar');
 
 Route::resource('/calendario', 'CalendarController');
 Route::post('events', 'CalendarController@addEvent')->name('events.add');

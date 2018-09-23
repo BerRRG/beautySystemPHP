@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Model\Calendar as CalendarModel;
-use App\Model\Client;
 use App\Model\Clinic;
+use App\Model\Client;
 use App\Model\Professional;
 use App\Model\Treatment;
 use Carbon\Carbon;
@@ -17,7 +20,7 @@ use Validator;
 
 class CalendarController extends Controller
 {
-    public function index(){
+    public function showCalendar(){
     	$events = CalendarModel::get();
     	$event_list = [];
     	foreach ($events as $key => $event) {
@@ -36,7 +39,7 @@ class CalendarController extends Controller
         $treatments = Treatment::all()->pluck('name', 'id')->toArray();
 
         return view('events', compact('calendar_details'))
-        ->withClients($clients)
+        ->withclients($clients)
         ->withTreatments($treatments)
         ->withClinics($clinics)
         ->withProfessionals($professionals);
@@ -68,7 +71,6 @@ class CalendarController extends Controller
         $eventName = $client->name.' - '.$clinic->name;
         $start = $request->input('start_date').' '.$request->input('start_time');
         $end = $request->input('end_date').' '.$request->input('end_time');
-
 
         if ($request->input('repeat')) {
             $this->addEventWeek(
@@ -113,5 +115,90 @@ class CalendarController extends Controller
             $event->save();
             $i++;
         }
+    }
+
+    public function index()
+    {
+        $calendars = CalendarModel::all();
+
+        return View::make('calendars.index')
+            ->with('calendars', $calendars);
+    }
+
+    public function show($id)
+    {
+        $calendar = CalendarModel::find($id);
+
+        return View::make('calendars.show')
+            ->with('calendar', $calendar);
+    }
+
+    public function edit($id)
+    {
+        $calendar = CalendarModel::find($id);
+        $clients = Client::all()->pluck('name', 'id')->toArray();
+        $clinics = Clinic::all()->pluck('name', 'id')->toArray();
+        $professionals = Professional::all()->pluck('name', 'id')->toArray();
+        $treatments = Treatment::all()->pluck('name', 'id')->toArray();
+
+        return View::make('calendars.edit')
+            ->with('calendar', $calendar)
+            ->with('clients', $clients)
+            ->with('clinics', $clinics)
+            ->with('professionals', $professionals)
+            ->with('treatments', $treatments);
+    }
+
+    public function update($id)
+    {
+        $client = Client::find(Input::get('client_id'));
+        $professional = Professional::find(Input::get('professional_id'));
+        $clinic = Clinic::find(Input::get('clinic_id'));
+        $treatment = Treatment::find(Input::get('treatment_id'));
+
+        $rules = array(
+            'client_id' => 'required',
+            'clinic_id' => 'required',
+            'professional_id' => 'required',
+            'treatment_id' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'start_date' => 'required',
+            'end_date' => 'required',
+        );
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('calendario/' . $id . '/edit')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        }
+
+        $eventName = $client->name.' - '.$clinic->name;
+        $start = Input::get('start_date').' '.Input::get('start_time');
+        $end = Input::get('end_date').' '.Input::get('end_time');
+
+        $event = new CalendarModel;
+        $event->clinic_id = $clinic->id;
+        $event->client_id = $client->id;
+        $event->professional_id = $professional->id;
+        $event->treatment_id = $treatment->id;
+        $event->event_name = $eventName;
+        $event->start_date = $start;
+        $event->end_date = $end;
+        $event->save();
+
+        Session::flash('message', 'Successfully updated client!');
+
+        return Redirect::to('calendario');
+    }
+
+    public function destroy($id)
+    {
+        $calendar = CalendarModel::find($id);
+        $calendar->delete();
+        Session::flash('message', 'Successfully deleted the client!');
+
+        return Redirect::to('calendario');
     }
 }
