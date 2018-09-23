@@ -12,9 +12,12 @@
 */
 
 Route::get('/', 'CalendarController@showCalendar');
-
 Route::resource('/calendario', 'CalendarController');
 Route::post('events', 'CalendarController@addEvent')->name('events.add');
+
+Route::get('/contas-calendario', 'BillController@showCalendar');
+Route::resource('contas', 'BillController');
+Route::post('bills', 'BillController@addEvent')->name('bills.add');
 
 Route::get('/user', 'UserController@index');
 

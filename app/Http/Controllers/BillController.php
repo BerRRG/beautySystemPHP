@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-use App\Model\Calendar as CalendarModel;
+use App\Model\Bill;
 use App\Model\Clinic;
 use App\Model\Client;
 use App\Model\Professional;
@@ -18,10 +18,10 @@ use Auth;
 use Calendar;
 use Validator;
 
-class CalendarController extends Controller
+class BillController extends Controller
 {
     public function showCalendar(){
-    	$events = CalendarModel::get();
+    	$events = Bill::get();
     	$event_list = [];
     	foreach ($events as $key => $event) {
     		$event_list[] = Calendar::event(
@@ -33,70 +33,29 @@ class CalendarController extends Controller
     	}
     	$calendar_details = Calendar::addEvents($event_list);
 
-        $clients = Client::all()->pluck('name', 'id')->toArray();
-        $clinics = Clinic::all()->pluck('name', 'id')->toArray();
-        $professionals = Professional::all()->pluck('name', 'id')->toArray();
-        $treatments = Treatment::all()->pluck('name', 'id')->toArray();
-
-        return view('events', compact('calendar_details'))
-        ->withclients($clients)
-        ->withTreatments($treatments)
-        ->withClinics($clinics)
-        ->withProfessionals($professionals);
+        return view('bills.calendar', compact('calendar_details'));
     }
 
     public function addEvent(Request $request)
     {
-        $client = Client::find($request->input('client_id'));
-        $professional = Professional::find($request->input('professional_id'));
-        $clinic = Clinic::find($request->input('clinic_id'));
-        $treatment = Treatment::find($request->input('treatment_id'));
-
         $validator = Validator::make($request->all(), [
-            'start_date' => 'required',
-            'end_date' => 'required',
-            'end_time' => 'required',
-            'start_time' => 'required',
-            'clinic_id' => 'required',
-            'client_id' => 'required',
-            'professional_id' => 'required',
-            'treatment_id' => 'required',
+            'date' => 'required',
+            'name' => 'required',
         ]);
 
         if ($validator->fails()) {
         	\Session::flash('warnning','Favor preencher os campos');
-            return Redirect::to('/')->withInput()->withErrors($validator);
+            return Redirect::to('/contas-calendario')->withInput()->withErrors($validator);
         }
 
-        $eventName = $client->name.' - '.$clinic->name;
-        $start = $request->input('start_date').' '.$request->input('start_time');
-        $end = $request->input('end_date').' '.$request->input('end_time');
-
-        if ($request->input('repeat')) {
-            $this->addEventWeek(
-                $request,
-                $eventName,
-                $start,
-                $end,
-                $clinic,
-                $client,
-                $professional,
-                $treatment
-            );
-        }
-
-        $event = new CalendarModel;
-        $event->clinic_id = $clinic->id;
-        $event->client_id = $client->id;
-        $event->professional_id = $professional->id;
-        $event->treatment_id = $treatment->id;
-        $event->event_name = $eventName;
-        $event->start_date = $start;
-        $event->end_date = $end;
+        $event = new Bill;
+        $event->event_name = Input::get('name');
+        $event->start_date = Input::get('date');
+        $event->end_date = Input::get('date');
         $event->save();
 
         \Session::flash('success','Cadastrado com sucesso!');
-        return Redirect::to('/calendario');
+        return Redirect::to('/contas-calendario');
     }
 
     protected function addEventWeek($request, $eventName, $start, $end, $clinic, $client, $professional, $treatment)
