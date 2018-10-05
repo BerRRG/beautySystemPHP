@@ -1,19 +1,30 @@
-<body background="https://i.ytimg.com/vi/szDwAEeGBrI/maxresdefault.jpg">
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-@include('nav');
+<body>
+  <head>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+    <!-- Scripts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>  
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    @include('nav');
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
+  </head>
 
 <!-- Scripts -->
-<script src="http://code.jquery.com/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 
 {!! $calendar_details->script() !!}
 
 <div class="container">
+    <p class="title">Agendamento de consultas</p>
+    <hr>
     <div class="panel panel-primary">
-     <div class="panel-heading">Calendario</div>
       <div class="panel-body">
            {!! Form::open(array('route' => 'events.add','method'=>'POST','files'=>'true')) !!}
             <div class="row">
@@ -90,7 +101,7 @@
      </div>
     </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">Detalhes</div>
+      
       <div class="panel-body" >
           {!! $calendar_details->calendar() !!}
       </div>

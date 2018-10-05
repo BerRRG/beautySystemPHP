@@ -3,28 +3,27 @@
 <head>
     <title>Lista de Clientes</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <style>
+    </style>
 </head>
 <body>
+   <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    @include('nav');
+
+
 <div class="container">
 
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('clients') }}">Listar clientes</a></li>
-        <li><a href="{{ URL::to('clients/create') }}">Adicionar cliente</a>
-    </ul>
-</nav>
-
-<h1>Lista de Clientes</h1>
+<p class="title">Listagem de Clientes</p>
+<hr>
+<a class="caption" href="{{ URL::to('clients') }}"> Listar clientes</a></li>
+<a class="caption" href="{{ URL::to('clients/create') }}"> Adicionar cliente</a>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-<table class="table table-striped table-bordered">
+<table id="registration-tables" class="table table-striped table-bordered">
     <thead>
         <tr>
             <td>ID</td>
