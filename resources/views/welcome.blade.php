@@ -47,6 +47,7 @@
 
             .title {
                 font-size: 84px;
+                color:#994659;
             }
 
             .links > a {
@@ -87,7 +88,7 @@
                     <a href="clinics">Consultórios</a>
                     <a href="professionals">Profissionais</a>
                     <a href="treatments">Tratamentos</a>
-                    <a href="calendario">Calendário</a>
+                    <a href="calendario-agenda">Calendário</a>
                 </div>
             </div>
         </div>

@@ -3,28 +3,21 @@
 <head>
     <title>Lista de Profissionais</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    @include('nav');
 </head>
 <body>
 <div class="container">
-
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('professionals') }}">Listar profissionais</a></li>
-        <li><a href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
-    </ul>
-</nav>
-
-<h1>Lista de Profissionais</h1>
+    <p class="title">Listagem de Profissionais</p>
+    <hr>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
     <div class="alert alert-info">{{ Session::get('message') }}</div>
 @endif
 
-<table class="table table-striped table-bordered">
+<table id="registration-tables" class="table table-striped table-bordered">
     <thead>
         <tr>
             <td>ID</td>
