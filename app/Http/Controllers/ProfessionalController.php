@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exporters\ProfessionalExporter;
 use App\Model\Professional;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\View;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ProfessionalController extends BaseController
 {
@@ -178,5 +180,10 @@ class ProfessionalController extends BaseController
         // redirect
         Session::flash('message', 'Successfully deleted the professional!');
         return Redirect::to('professionals');
+    }
+
+    public function export()
+    {
+        return Excel::download(new ProfessionalExporter, 'professional.xlsx');
     }
 }

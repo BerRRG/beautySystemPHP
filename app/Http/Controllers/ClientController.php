@@ -48,18 +48,19 @@ class ClientController extends BaseController
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
-            'address'       => 'required',
-            'neighborhood'       => 'required',
-            'city'       => 'required',
-            'uf'       => 'required',
-            'celphone'       => 'required',
-            'occupation'       => 'required',
-            'marital_status'       => 'required',
-            'phone'       => 'required',
-            'cep'       => 'required',
-            'email'      => 'required|email',
-            'birth_date'      => 'required'
+            'name' => 'required',
+            'address' => 'required',
+            'neighborhood' => 'required',
+            'city' => 'required',
+            'uf' => 'required',
+            'celphone' => 'required',
+            'occupation' => 'required',
+            'marital_status' => 'required',
+            'phone' => 'required',
+            'cep' => 'required',
+            'email' => 'required|email',
+            'cpf' => 'required',
+            'birth_date' => 'required'
         );
         $validator = Validator::make(Input::all(), $rules);
 
@@ -71,18 +72,19 @@ class ClientController extends BaseController
         } else {
             // store
             $client = new Client;
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->address      = Input::get('address');
-            $client->neighborhood      = Input::get('neighborhood');
-            $client->city      = Input::get('city');
-            $client->uf      = Input::get('uf');
-            $client->celphone      = Input::get('celphone');
-            $client->occupation      = Input::get('occupation');
-            $client->marital_status      = Input::get('marital_status');
-            $client->phone      = Input::get('phone');
-            $client->cep      = Input::get('cep');
-            $client->birth_date      = Input::get('birth_date');;
+            $client->name = Input::get('name');
+            $client->email = Input::get('email');
+            $client->address = Input::get('address');
+            $client->neighborhood = Input::get('neighborhood');
+            $client->city = Input::get('city');
+            $client->uf = Input::get('uf');
+            $client->celphone = Input::get('celphone');
+            $client->occupation = Input::get('occupation');
+            $client->marital_status = Input::get('marital_status');
+            $client->phone = Input::get('phone');
+            $client->cep = Input::get('cep');
+            $client->cpf = Input::get('cpf');
+            $client->birth_date = Input::get('birth_date');;
 
             $client->save();
 
@@ -130,19 +132,21 @@ class ClientController extends BaseController
         // validate
         // read more on validation at http://laravel.com/docs/validation
         $rules = array(
-            'name'       => 'required',
-            'address'       => 'required',
-            'neighborhood'       => 'required',
-            'city'       => 'required',
-            'uf'       => 'required',
-            'celphone'       => 'required',
-            'occupation'       => 'required',
-            'marital_status'       => 'required',
-            'phone'       => 'required',
-            'cep'       => 'required',
-            'email'      => 'required|email',
-            'birth_date'      => 'required'
+            'name' => 'required',
+            'address' => 'required',
+            'neighborhood' => 'required',
+            'city' => 'required',
+            'uf' => 'required',
+            'celphone' => 'required',
+            'occupation' => 'required',
+            'marital_status' => 'required',
+            'phone' => 'required',
+            'cep' => 'required',
+            'email' => 'required|email',
+            'cpf' => 'required',
+            'birth_date' => 'required'
         );
+
         $validator = Validator::make(Input::all(), $rules);
 
         // process the login
@@ -153,18 +157,19 @@ class ClientController extends BaseController
         } else {
             // store
             $client = Client::find($id);
-            $client->name       = Input::get('name');
-            $client->email      = Input::get('email');
-            $client->address      = Input::get('address');
-            $client->neighborhood      = Input::get('neighborhood');
-            $client->city      = Input::get('city');
-            $client->uf      = Input::get('uf');
-            $client->celphone      = Input::get('celphone');
-            $client->occupation      = Input::get('occupation');
-            $client->marital_status      = Input::get('marital_status');
-            $client->phone      = Input::get('phone');
-            $client->cep      = Input::get('cep');
-            $client->birth_date      = Input::get('birth_date');
+            $client->name = Input::get('name');
+            $client->email = Input::get('email');
+            $client->address = Input::get('address');
+            $client->neighborhood = Input::get('neighborhood');
+            $client->city = Input::get('city');
+            $client->uf = Input::get('uf');
+            $client->celphone = Input::get('celphone');
+            $client->occupation = Input::get('occupation');
+            $client->marital_status = Input::get('marital_status');
+            $client->phone = Input::get('phone');
+            $client->cep = Input::get('cep');
+            $client->birth_date = Input::get('birth_date');
+            $client->cpf = Input::get('cpf');
             $client->save();
 
             // redirect
@@ -182,7 +187,7 @@ class ClientController extends BaseController
     {
         // delete
         $client = Client::find($id);
-        
+
         $client->delete();
         // redirect
         Session::flash('message', 'Cliente deletado com sucesso!');

@@ -93,10 +93,23 @@ class CalendarController extends Controller
         $event->event_name = $eventName;
         $event->start_date = $start;
         $event->end_date = $end;
+
+        $duplicated = CalendarModel::select('*')
+            ->where('clinic_id', $clinic->id)
+            ->where('professional_id', $professional->id)
+            ->where('end_date', '<=', $start)
+            ->where('start_date', '>=', $end)
+            ->first();
+
+        if ($duplicated) {
+        	\Session::flash('warnning','Calendario duplicado');
+            return Redirect::to('/calendario-agenda')->withInput();
+        }
+
         $event->save();
 
         \Session::flash('success','Cadastrado com sucesso!');
-        return Redirect::to('/calendario');
+        return Redirect::to('/calendario-agenda');
     }
 
     protected function addEventWeek($request, $eventName, $start, $end, $clinic, $client, $professional, $treatment)
