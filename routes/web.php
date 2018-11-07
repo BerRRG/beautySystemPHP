@@ -32,3 +32,5 @@ Route::resource('clinics', 'ClinicController');
 Route::resource('professionals', 'ProfessionalController');
 
 Route::resource('treatments', 'TreatmentController');
+
+Route::get('reports', 'ReportsController@index');

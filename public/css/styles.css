@@ -310,8 +310,6 @@ body{
         margin-top: 15px;
       }
 
-      
-
       .details{
         font-size: 11pt;
         letter-spacing:0.5px;
@@ -332,4 +330,49 @@ body{
         text-align: center;
         color: #873746;
         /*font-weight: bold;*/
+      }
+
+      .panel-reports {
+        padding: 23px!important;
+        background-color: #ffffff;
+      }
+
+      .reports-bar{
+        border-top: 1px solid #cccccc!important;
+      }
+
+      .title-reports{
+        color: #000000;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      .caption-reports{
+        color: #8c8c8c;
+        font-family: 'Raleway', sans-serif;
+      }
+
+      .reports-title{
+        color: #a65566;
+        font-family: 'Raleway', sans-serif;
+        font-size: 23pt;
+      }
+
+      div.reports{
+        margin-left: 3%;
+      }
+
+      .calendar-panel{
+        padding: 2%;
+      }
+
+      .calendar-title{
+        color: #9c9c9c;
+      }
+
+      .calendar-title hr{
+        margin-top: 0px;
+      }
+
+      .buttonCalendar{
+        margin-left: 3%;
       }
