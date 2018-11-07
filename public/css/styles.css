@@ -53,10 +53,6 @@ body{
           padding-right: 15px;
         }
 
-        nav.sidebar .navbar-nav > li:first-child{
-          border-top: 1px black solid;
-        }
-
         nav.sidebar .navbar-nav > li{
           border-bottom: 1px #cccccc solid;
         }
@@ -87,8 +83,6 @@ body{
         .navbar-inverse .navbar-nav .open .dropdown-menu>li>a {
           color: #B22222;
         }
-
-
 
         nav.sidebar{
           width: 200px;
@@ -123,9 +117,6 @@ body{
           float: left;
         }
 
-        nav.sidebar .forAnimate{
-          opacity: 1;
-        }
       }
 
       nav.sidebar .navbar-nav .open .dropdown-menu>li>a:hover, nav.sidebar .navbar-nav .open .dropdown-menu>li>a:focus {
@@ -133,9 +124,7 @@ body{
         font-family: 'Raleway', sans-serif;
       }
 
-      nav:hover .forAnimate{
-        opacity: 1;
-      }
+      
       section{
         padding-left: 15px;
       }
@@ -144,10 +133,12 @@ body{
 
       .title{
         float:right;
-        font-size: 25pt;
+        font-size: 28pt;
         font-family: 'Raleway', sans-serif;
-        color: #994659;
-      }
+        color: #000000;
+        margin-left: 22px;
+        margin-top: 5px;
+      }      
 
       .logoMenu{
         position:absolute;
@@ -165,7 +156,7 @@ body{
       }
       .container hr{
         position: relative;
-        border-top: 1px solid #994659;
+        border-top: 1px solid #000000;
         width: 100%;
       }
       
@@ -173,20 +164,15 @@ body{
         border-color: #ffffff!important;
         margin-top: 5%;
         box-shadow: -9px 11px 44px 0px rgba(207,207,207,1);
+
       }
       
       .panel{
         margin-top: 4%;
       }
 
-
-      .btn-primary{
-        background-color: #994659!important;
-        border-color: #994659!important;
-      }
-
-      .nav .navbar-nav li{
-        
+      .calendarHeader{
+        margin-top: 7%!important;
       }
 
       label {
@@ -204,17 +190,18 @@ body{
 
       h2{
         font-family: 'Raleway', sans-serif!important;
-        font-size: 27pt;
-        color:#994659;
+        font-size: 26pt;
+        color:#000000;
       }
 
       .fc-widget-header{
         font-family: 'Raleway', sans-serif!important;
         font-size: 15px;
-      }
 
+      }
       .alert-success{
-        background-color: #994659;
+        background-color: #b36675;
+        color: #ffffff;
       }
 
       .fc-content{
@@ -230,28 +217,119 @@ body{
         background-color: #d4d4d4;
       }
 
-      /*Styles listagens*/
-      thead{
-        color:#994659 ;
-        font-size: 15pt;
+      .fc-end{
+        border: none;
+        background-color: #d4d4d4;
       }
 
+      /*Styles listagens*/
       #registration-tables{ 
         border-color: #ffffff!important;
-        margin-top: 6%;
         box-shadow: -9px 11px 44px 0px rgba(207,207,207,1);
-        
       }
+
+      #registration-tables thead{ 
+        color: #000000!important;
+        font-size:13pt;
+        background-color: #ffffff;
+        text-align: center;
+      }
+
+      tbody td{
+        text-align: center;
+      }
+
 
       .caption{
         float:right;
-        font-size: 12pt;
         font-family: 'Raleway', sans-serif;
-        color: #994659;
-        padding-right: 30px; 
+        color: #ffffff;
+        margin-bottom: 2%;
         text-decoration: none!important;
+
       }
 
-      .caption:hover{
-        color: #000000;   
+      .menu{
+        background-color: #994659!important;
+        border-color: #994659!important;
+        margin-left: 15px;
+        padding-right: 10px;
+      }
+
+      .btn-primary{
+        background-color: #a65566!important;
+        border-color: #a65566!important;
+      }
+
+      .alert-info{
+        margin-top: 5%;
+        background-color: #9e9d9d;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+        opacity: 
+        border: none;
+        color: #000000;
+        border-color: #9e9d9d ;
+      }
+              
+
+      .btn-info{
+        background-color: #ad6572!important;
+        border-color: #ad6572!important;      
+      }
+
+      .btn-success{
+        background-color: #32ba5b!important;
+        border-color: #32ba5b!important;  
+        margin-right: 13px;    
+      }
+
+      .btn-warning{
+        background-color: #d94e4e!important;
+        border-color: #d94e4e!important;
+        margin-right: 20px;
+      }
+
+      .positionButtons{
+        margin-left: 30px;
+      }
+
+      /*Styles cadastros*/
+      .register {
+        padding: 23px!important;
+        background-color: #ffffff;
+        margin-top: 6%;
+      }
+
+      .form-control:focus {
+        border-color:#a65566;
+        box-shadow: 0px 0px 32px -7px rgba(166,85,102,1);
+      }
+
+      .buttonCad{
+        margin-top: 15px;
+      }
+
+      
+
+      .details{
+        font-size: 11pt;
+        letter-spacing:0.5px;
+        font-family: 'Raleway', sans-serif!important;
+        
+        text-align: center;
+      }
+
+      .details strong{
+        font-size: 12pt;
+        font-family: 'Raleway', sans-serif!important;
+        color: #363636;
+      }
+
+      .title-detail{
+        font-size: 25pt;
+        font-family: 'Raleway', sans-serif!important;
+        text-align: center;
+        color: #873746;
+        /*font-weight: bold;*/
       }

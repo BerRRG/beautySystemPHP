@@ -1,30 +1,31 @@
 <body>
   <head>
+    <script src="http://code.jquery.com/jquery.js"></script>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
     <!-- Scripts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
-    <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>  
-    <script src="http://code.jquery.com/jquery.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
     @include('nav');
-
   </head>
 
 <!-- Scripts -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.js"></script>
 
 {!! $calendar_details->script() !!}
 
 <div class="container">
     <p class="title">Agendamento de consultas</p>
     <hr>
-    <div class="panel panel-primary">
+    <a class="btn btn-primary caption menu" href="{{ URL::to('calendario') }}"> Listar consultas</a>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('clients/create') }}"> Adicionar cliente</a>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('treatments/create') }}">Adicionar tratamento</a>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('professionals/create') }}">Adicionar profissional</a>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('clinics/create') }}">Adicionar consultório</a>
+    <div class="panel panel-primary calendarHeader">
       <div class="panel-body">
            {!! Form::open(array('route' => 'events.add','method'=>'POST','files'=>'true')) !!}
             <div class="row">
@@ -100,8 +101,7 @@
            {!! Form::close() !!}
      </div>
     </div>
-    <div class="panel panel-primary">
-      
+    <div class="panel panel-primary">    
       <div class="panel-body" >
           {!! $calendar_details->calendar() !!}
       </div>
