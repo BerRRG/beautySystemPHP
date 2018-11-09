@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Exporters\ProfessionalExporter;
+use App\Exporters\ProfessionalWeekExporter;
+use App\Exporters\ProfessionalMonthExporter;
 use App\Model\Professional;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -185,5 +187,15 @@ class ProfessionalController extends BaseController
     public function export()
     {
         return Excel::download(new ProfessionalExporter, 'professional.xlsx');
+    }
+
+    public function exportWeek()
+    {
+        return Excel::download(new ProfessionalWeekExporter, 'professionalWeek.xlsx');
+    }
+
+    public function exportMonth()
+    {
+        return Excel::download(new ProfessionalMonthExporter, 'professionalMonth.xlsx');
     }
 }

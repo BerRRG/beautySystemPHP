@@ -18,21 +18,27 @@
         <p class="reports-title">Tipos de relatórios</p>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de vendas semanais</h4>
-            <p class="caption-reports">Bernardo Generozo</p>
-            <button class="btn btn-primary">Download</button>
+            <h4 class="title-reports">Relatório de profissionais com mais trabalho</h4>
+            {{ Form::open(array('url' => '/professional-reports', 'class' => 'btn')) }}
+                {{ Form::hidden('_method', 'GET') }}
+                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+            {{ Form::close() }}
         </div>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de vendas semanais</h4>
-            <p class="caption-reports">Vai tomar </p>
-            <button class="btn btn-primary">Download</button>
+            <h4 class="title-reports">Relatório de profissionais por semanal</h4>
+            {{ Form::open(array('url' => '/professional-week-reports', 'class' => 'btn')) }}
+                {{ Form::hidden('_method', 'GET') }}
+                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+            {{ Form::close() }}
         </div>
             <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de vendas semanais</h4>
-            <p class="caption-reports">no seu cu</p>
-            <button class="btn btn-primary">Download</button>
+            <h4 class="title-reports">Relatório de profissionais mensal</h4>
+            {{ Form::open(array('url' => '/professional-month-reports', 'class' => 'btn')) }}
+                {{ Form::hidden('_method', 'GET') }}
+                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+            {{ Form::close() }}
         </div>
         <hr class="reports-bar">
     </div>
