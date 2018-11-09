@@ -27,7 +27,7 @@ class CreateClientTable extends Migration
             $table->string('celphone');
             $table->string('occupation');
             $table->string('marital_status');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->timestamps();
         });
     }

@@ -61,7 +61,7 @@ class ClinicController extends BaseController
             $clinic->name       = Input::get('name');
             $clinic->save();
             // redirect
-            Session::flash('message', 'Successfully created clinic!');
+            Session::flash('message', 'Consultório adicionado com sucesso!');
             return Redirect::to('clinics');
         }
     }
@@ -114,7 +114,7 @@ class ClinicController extends BaseController
             $clinic->name       = Input::get('name');
             $clinic->save();
             // redirect
-            Session::flash('message', 'Successfully updated clinic!');
+            Session::flash('message', 'Consultório editado com sucesso!');
             return Redirect::to('clinics');
         }
     }
@@ -130,7 +130,7 @@ class ClinicController extends BaseController
         $clinic = Clinic::find($id);
         $clinic->delete();
         // redirect
-        Session::flash('message', 'Successfully deleted the clinic!');
+        Session::flash('message', 'Consultório deletado com sucesso!');
         return Redirect::to('clinics');
     }
 }

@@ -111,7 +111,7 @@
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  {!! Form::label('clinic_id','Sala:') !!}
+                  {!! Form::label('clinic_id','Consultório:') !!}
                   {!! Form::select('clinic_id', $clinics, [], ['class' => 'form-control']) !!}
                   {!! $errors->first('clinic_id', '<p class="alert alert-danger">:message</p>') !!}
                 </div>
@@ -119,7 +119,7 @@
             </div>
             <div class="row">
               <div class="form-group">
-                {!! Form::submit('Adicionar consulta',['class'=>'btn btn-primary buttonCalendar']) !!}
+                {!! Form::submit('Adicionar' ,['class'=>'btn btn-primary buttonCalendar']) !!}
               </div>
             </div>
             </div>

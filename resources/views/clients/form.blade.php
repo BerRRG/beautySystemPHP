@@ -38,7 +38,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     {{ Form::label('celphone', 'Celular') }}
-                    {{Form::number('celphone', null, ['class' => 'form-control'])}}
+                    {{Form::number('celphone', null, array('class' => 'form-control'))}}
                 </div>
             </div>
             <div class="col-sm-2">

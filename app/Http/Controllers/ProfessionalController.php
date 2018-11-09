@@ -86,7 +86,7 @@ class ProfessionalController extends BaseController
             $professional->birth_date      = Input::get('birth_date');;
             $professional->save();
             // redirect
-            Session::flash('message', 'Successfully created professional!');
+            Session::flash('message', 'Profissional adicionado com sucesso!');
             return Redirect::to('professionals');
         }
     }
@@ -164,7 +164,7 @@ class ProfessionalController extends BaseController
             $professional->birth_date      = Input::get('birth_date');;
             $professional->save();
             // redirect
-            Session::flash('message', 'Successfully updated professional!');
+            Session::flash('message', 'Profissional editado com sucesso!');
             return Redirect::to('professionals');
         }
     }
@@ -180,7 +180,7 @@ class ProfessionalController extends BaseController
         $professional = Professional::find($id);
         $professional->delete();
         // redirect
-        Session::flash('message', 'Successfully deleted the professional!');
+        Session::flash('message', 'Profissional deletado com sucesso!');
         return Redirect::to('professionals');
     }
 
