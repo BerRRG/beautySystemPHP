@@ -19,6 +19,8 @@
 {{ Html::ul($errors->all()) }}
 {{ Form::model($client, array('route' => array('clients.update', $client->id), 'method' => 'PUT')) }}
 
+{{ Form::model($client, array('route' => array('clients.update', $client->id), 'method' => 'PUT'))}}
+
 @include('clients.form')
 
 <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('clients') }}">Voltar</a>
