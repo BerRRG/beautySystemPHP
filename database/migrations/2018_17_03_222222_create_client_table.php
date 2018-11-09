@@ -23,6 +23,7 @@ class CreateClientTable extends Migration
             $table->string('city');
             $table->string('uf');
             $table->string('phone');
+            $table->string('cpf');
             $table->string('celphone');
             $table->string('occupation');
             $table->string('marital_status');

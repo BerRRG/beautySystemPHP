@@ -11,6 +11,7 @@
 |
 */
 
+//Route::get('/', 'CalendarController@showCalendar');
 Route::get('/', function () {
     return view('welcome');
 });
@@ -29,6 +30,9 @@ Route::resource('clients', 'ClientController');
 
 Route::resource('clinics', 'ClinicController');
 
+Route::get('/professional-reports', 'ProfessionalController@export');
+Route::get('/professional-week-reports', 'ProfessionalController@exportWeek');
+Route::get('/professional-month-reports', 'ProfessionalController@exportMonth');
 Route::resource('professionals', 'ProfessionalController');
 
 Route::resource('treatments', 'TreatmentController');

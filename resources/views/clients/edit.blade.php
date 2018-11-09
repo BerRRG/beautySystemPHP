@@ -17,14 +17,7 @@
 
 <!-- if there are creation errors, they will show here -->
 {{ Html::ul($errors->all()) }}
-<script type="text/javascript">
-	var confirm = confirm('Quer realmente deletar?');
-	if (confirm) {
-		return true;
-	}
-	return false;
-</script>
-{{ Form::model($client, array('route' => array('clients.update', $client->id), 'method' => 'PUT'), 'onsubmit' => 'ConfirmDelete()') }}
+{{ Form::model($client, array('route' => array('clients.update', $client->id), 'method' => 'PUT')) }}
 
 @include('clients.form')
 

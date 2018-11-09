@@ -23,10 +23,9 @@
           </li>  
           <li >
             <a href="{{ URL::to('/treatments') }}">Tratamentos<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-book"></span></a>
-          </li>       
-                 
+          </li>
           <li >
-            <a href="{{URL::to('reports/index')}}">Relatórios<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tasks"></span></a>
+            <a href="{{URL::to('/reports')}}">Relatórios<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tasks"></span></a>
           </li>
           <li >
             <a href="{{ URL::to('/contas-calendario') }}">Contas<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-tags"></span></a>

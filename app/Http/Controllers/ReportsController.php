@@ -18,9 +18,7 @@ class ReportsController extends BaseController
 	public function index()
     {
         // get all the clinics
-        $reports = Reports::all();
         // load the view and pass the clinics
-        return View::make('reports.index')
-            ->with('reports', $reports);
+        return View::make('reports.index');
     }
 }
