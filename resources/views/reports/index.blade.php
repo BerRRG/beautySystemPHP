@@ -18,7 +18,7 @@
         <p class="reports-title">Tipos de relatórios</p>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de profissionais com mais trabalho</h4>
+            <h4 class="title-reports">Relatório de profissionais</h4>
             {{ Form::open(array('url' => '/professional-reports', 'class' => 'btn')) }}
                 {{ Form::hidden('_method', 'GET') }}
                 {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
@@ -26,7 +26,7 @@
         </div>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de profissionais por semanal</h4>
+            <h4 class="title-reports">Relatório de profissionais semanal</h4>
             {{ Form::open(array('url' => '/professional-week-reports', 'class' => 'btn')) }}
                 {{ Form::hidden('_method', 'GET') }}
                 {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}

@@ -94,15 +94,25 @@ class CalendarController extends Controller
         $event->start_date = $start;
         $event->end_date = $end;
 
-        $duplicated = CalendarModel::select('*')
+        $duplicatedClinic = CalendarModel::select('*')
             ->where('clinic_id', $clinic->id)
-            ->where('professional_id', $professional->id)
-            ->where('end_date', '<=', $start)
-            ->where('start_date', '>=', $end)
+            ->where('end_date', '>=', $start)
+            ->where('start_date', '<=', $end)
             ->first();
 
-        if ($duplicated) {
-        	\Session::flash('warnning','Calendario duplicado');
+        $duplicatedProfessional = CalendarModel::select('*')
+            ->where('professional_id', $professional->id)
+            ->where('end_date', '>=', $start)
+            ->where('start_date', '<=', $end)
+            ->first();
+
+        if ($duplicatedClinic) {
+        	\Session::flash('warnning','Calendario duplicado sala em uso');
+            return Redirect::to('/calendario-agenda')->withInput();
+        }
+
+        if ($duplicatedProfessional) {
+        	\Session::flash('warnning','Calendario duplicado profissional já alocado');
             return Redirect::to('/calendario-agenda')->withInput();
         }
 
