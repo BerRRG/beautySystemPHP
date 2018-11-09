@@ -34,3 +34,5 @@ Route::get('/professional-reports', 'ProfessionalController@export');
 Route::resource('professionals', 'ProfessionalController');
 
 Route::resource('treatments', 'TreatmentController');
+
+Route::get('reports', 'ReportsController@index');

@@ -18,20 +18,20 @@
     <div class="panel panel-primary register">
         <p class="title-detail">{{ $client->name }}</p>
         <p class="details">
-	    <strong>Data de Nascimento:</strong> {{ $client->birth_date }}<br>            
-	    <strong>Email:</strong> {{ $client->email }}<br>
-	    <strong>Telefone:</strong> {{ $client->phone }}<br>
-	    <strong>Celular:</strong> {{ $client->celphone }}<br>
-	    <strong>Endereço:</strong> {{ $client->address }}<br>
-	    <strong>Bairro:</strong> {{ $client->neighborhood }}<br>
-	    <strong>CEP:</strong> {{ $client->cep }}<br>
-	    <strong>Cidade:</strong> {{ $client->city }}<br>
-	    <strong>Estado:</strong> {{ $client->uf }}<br>
-	    <strong>Trabalho:</strong> {{ $client->occupation }}<br>
-	    <strong>Estado civil:</strong> {{ $client->marital_status }}<br>
+        <strong>Data de Nascimento:</strong> {{ $client->birth_date }}<br>            
+        <strong>Email:</strong> {{ $client->email }}<br>
+        <strong>Telefone:</strong> {{ $client->phone }}<br>
+        <strong>Celular:</strong> {{ $client->celphone }}<br>
+        <strong>Endereço:</strong> {{ $client->address }}<br>
+        <strong>Bairro:</strong> {{ $client->neighborhood }}<br>
+        <strong>CEP:</strong> {{ $client->cep }}<br>
+        <strong>Cidade:</strong> {{ $client->city }}<br>
+        <strong>Estado:</strong> {{ $client->uf }}<br>
+        <strong>Trabalho:</strong> {{ $client->occupation }}<br>
+        <strong>Estado civil:</strong> {{ $client->marital_status }}<br>
         </p>
     </div>
-    <div>    	
+    <div>       
         <a class="btn btn-small btn-primary" href="{{ URL::to('clients') }}">Voltar</a>
     </div>
 <br/>
