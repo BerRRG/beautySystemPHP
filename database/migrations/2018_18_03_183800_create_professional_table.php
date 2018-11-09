@@ -26,7 +26,7 @@ class CreateProfessionalTable extends Migration
             $table->string('celphone');
             $table->string('occupation');
             $table->string('marital_status');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }

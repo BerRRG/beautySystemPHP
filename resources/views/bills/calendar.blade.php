@@ -1,6 +1,8 @@
 
-<body background="https://i.ytimg.com/vi/szDwAEeGBrI/maxresdefault.jpg">
+<body>
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+<link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 @include('nav');
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.7/fullcalendar.min.css"/>
@@ -13,8 +15,9 @@
 {!! $calendar_details->script() !!}
 
 <div class="container">
+  <p class="title">Controle de despesas</p>
+    <hr>
     <div class="panel panel-primary">
-     <div class="panel-heading">Calendario</div>
       <div class="panel-body">
            {!! Form::open(array('route' => 'bills.add','method'=>'POST','files'=>'true')) !!}
             <div class="row">
@@ -28,13 +31,13 @@
 
                 <div class="col-xs-3 col-sm-3 col-md-3">
                     <div class="form-group">
-                    {{ Form::label('name', 'Nome') }}
+                    {{ Form::label('name', 'Descrição da conta:') }}
                     {{ Form::text('name', Input::old('name'), array('class' => 'form-control')) }}
                     </div>
                 </div>
              <div class="col-xs-3 col-sm-3 col-md-3">
                 <div class="form-group">
-                  {!! Form::label('date','Data da conta:') !!}
+                  {!! Form::label('date','Data de pagamento:') !!}
                   <div class="">
                   {!! Form::date('date', null, ['class' => 'form-control']) !!}
                   {!! $errors->first('date', '<p class="alert alert-danger">:message</p>') !!}
@@ -50,7 +53,6 @@
      </div>
     </div>
     <div class="panel panel-primary">
-      <div class="panel-heading">Detalhes</div>
       <div class="panel-body" >
           {!! $calendar_details->calendar() !!}
       </div>

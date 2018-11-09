@@ -7,11 +7,7 @@
 <body>
 <div class="container">
 
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
-    </div>
-    <ul class="nav navbar-nav">
+
         <li><a href="{{ URL::to('calendario') }}">Listar calendarioes</a></li>
     </ul>
 </nav>

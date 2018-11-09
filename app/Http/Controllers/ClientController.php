@@ -87,7 +87,7 @@ class ClientController extends BaseController
             $client->save();
 
             // redirect
-            Session::flash('message', 'Successfully created client!');
+            Session::flash('message', 'Cliente criado com sucesso!');
             return Redirect::to('clients');
         }
     }
@@ -168,7 +168,7 @@ class ClientController extends BaseController
             $client->save();
 
             // redirect
-            Session::flash('message', 'Successfully updated client!');
+            Session::flash('message', 'Cliente atualizado com sucesso!');
             return Redirect::to('clients');
         }
     }
@@ -182,9 +182,10 @@ class ClientController extends BaseController
     {
         // delete
         $client = Client::find($id);
+        
         $client->delete();
         // redirect
-        Session::flash('message', 'Successfully deleted the client!');
+        Session::flash('message', 'Cliente deletado com sucesso!');
         return Redirect::to('clients');
     }
 }

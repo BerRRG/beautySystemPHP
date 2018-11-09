@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lista de Calendario</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    @include('nav');
+    <title>Lista de Calendario</title>
+    
 </head>
 <body>
 <div class="container">
+    <p class="title">Listagem de consultas</p>
+    <hr>
+    <a class="btn btn-primary caption menu" href="{{ URL::to('calendario-agenda') }}">Adicionar consulta</a></li>
+    <!-- will be used to show any messages -->
+    @if (Session::has('message'))
+        <div class="alert alert-info">{{ Session::get('message') }}</div>
+    @endif
 
-<nav class="navbar navbar-inverse">
-    <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('/') }}">Home</a>
-    </div>
-    <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('calendars') }}">Listar Calendario</a></li>
-    </ul>
-</nav>
-
-<h1>Lista de Calendario</h1>
-
-<!-- will be used to show any messages -->
-@if (Session::has('message'))
-    <div class="alert alert-info">{{ Session::get('message') }}</div>
-@endif
-
-<table class="table table-striped table-bordered">
+<table id="registration-tables"class="table table-striped table-bordered">
     <thead>
         <tr>
             <td>ID</td>
