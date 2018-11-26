@@ -1,9 +1,15 @@
 <?php
+<<<<<<< Updated upstream
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+=======
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+>>>>>>> Stashed changes
 class CreateClientTable extends Migration
 {
     /**
@@ -27,11 +33,14 @@ class CreateClientTable extends Migration
             $table->string('celphone');
             $table->string('occupation');
             $table->string('marital_status');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     /**
      * Reverse the migrations.
      *
@@ -41,4 +50,8 @@ class CreateClientTable extends Migration
     {
         Schema::dropIfExists('clients');
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

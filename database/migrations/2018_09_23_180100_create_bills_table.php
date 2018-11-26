@@ -19,7 +19,7 @@ class CreateBillsTable extends Migration
             $table->string('event_name');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->boolean('full_day');
+            $table->boolean('full_day')->default(false);
         });
     }
 
