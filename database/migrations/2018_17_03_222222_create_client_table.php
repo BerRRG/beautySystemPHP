@@ -1,9 +1,15 @@
 <?php
+<<<<<<< Updated upstream
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+=======
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+>>>>>>> Stashed changes
 class CreateClientTable extends Migration
 {
     /**
@@ -31,7 +37,10 @@ class CreateClientTable extends Migration
             $table->timestamps();
         });
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     /**
      * Reverse the migrations.
      *
@@ -41,4 +50,8 @@ class CreateClientTable extends Migration
     {
         Schema::dropIfExists('clients');
     }
+<<<<<<< Updated upstream
 }
+=======
+}
+>>>>>>> Stashed changes

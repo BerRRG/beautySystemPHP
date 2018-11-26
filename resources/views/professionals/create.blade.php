@@ -24,7 +24,7 @@
 
 @include('professionals.form')
 
-<a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('professionals') }}">Voltar</a>
+<!-- <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('professionals') }}">Voltar</a> -->
 {{ Form::submit('Inserir Profissional', array('class' => 'btn btn-primary buttonCad')) }}
 
 {{ Form::close() }}

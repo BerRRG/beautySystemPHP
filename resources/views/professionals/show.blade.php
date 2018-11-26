@@ -33,6 +33,7 @@
     </div>
     <div>    	
         <a class="btn btn-small btn-primary" href="{{ URL::to('professionals') }}">Voltar</a>
+        <!-- <a class="btn btn-small btn-primary" href="{{ URL::to('professionals/edit') }}">Editar</a> -->
     </div>
 <br/>
 </div>

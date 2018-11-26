@@ -213,8 +213,8 @@ body{
       }
 
       .fc-event{
-        border: none;
-        background-color: #d4d4d4;
+        border: none!important;
+        background-color: #d4d4d4!important;
       }
 
       .fc-end{
