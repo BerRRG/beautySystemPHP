@@ -18,26 +18,29 @@
         <p class="reports-title">Tipos de relatórios</p>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de profissionais com mais trabalho</h4>
+            <h4 class="title-reports">Profissionais com mais trabalho</h4>
+            <p class="caption-reports">Relatório que apresenta os funcionários que mais estão trabalhando na clinica</p>
             {{ Form::open(array('url' => '/professional-reports', 'class' => 'btn')) }}
                 {{ Form::hidden('_method', 'GET') }}
-                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Baixar', array('class' => 'btn btn-primary')) }}
             {{ Form::close() }}
         </div>
         <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de profissionais por semanal</h4>
+            <h4 class="title-reports">Profissionais semanal</h4>
+            <p class="caption-reports">Relatório que apresenta os atendimentos e rendimentos dos funcionários por semana</p>
             {{ Form::open(array('url' => '/professional-week-reports', 'class' => 'btn')) }}
                 {{ Form::hidden('_method', 'GET') }}
-                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Baixar', array('class' => 'btn btn-primary')) }}
             {{ Form::close() }}
         </div>
             <hr class="reports-bar">
         <div class="reports">
-            <h4 class="title-reports">Relatório de profissionais mensal</h4>
+            <h4 class="title-reports">Profissionais mensal</h4>
+            <p class="caption-reports">Relatório que apresenta os atendimentos e rendimentos dos funcionários por mês</p>
             {{ Form::open(array('url' => '/professional-month-reports', 'class' => 'btn')) }}
                 {{ Form::hidden('_method', 'GET') }}
-                {{ Form::submit('Download', array('class' => 'btn btn-primary')) }}
+                {{ Form::submit('Baixar', array('class' => 'btn btn-primary')) }}
             {{ Form::close() }}
         </div>
         <hr class="reports-bar">

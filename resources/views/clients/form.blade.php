@@ -38,7 +38,7 @@
             <div class="col-sm-2">
                 <div class="form-group">
                     {{ Form::label('celphone', 'Celular') }}
-                    {{Form::number('celphone', null, array('class' => 'form-control'))}}
+                    {{Form::text('celphone', null, array('class' => 'form-control'))}}
                 </div>
             </div>
             <div class="col-sm-2">
@@ -55,7 +55,7 @@
             <div class="col-sm-3">
                 <div class="form-group">
                     {{ Form::label('cep', 'CEP') }}
-                    {{Form::number('cep', null, ['class' => 'form-control'])}}
+                    {{ Form::text('cep', null, ['class' => 'form-control'])}}
                 </div>
             </div>  
             <div class="col-sm-9">
