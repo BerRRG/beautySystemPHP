@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cadastrar Clínica</title>
+    <title>Cadastrar Consultório</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
@@ -31,7 +31,7 @@
             </div>
         </div>
     </div>
-    <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('clinics') }}">Voltar</a>
+    <!-- <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('clinics') }}">Voltar</a> -->
     {{ Form::submit('Inserir Consultório', array('class' => 'btn btn-primary buttonCad')) }}  
 
 {{ Form::close() }}

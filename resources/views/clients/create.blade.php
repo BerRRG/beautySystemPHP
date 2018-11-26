@@ -22,7 +22,7 @@
 
 @include('clients.form')
 
-<a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('clients') }}">Voltar</a>
+<!-- <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('clients') }}">Voltar</a> -->
 {{ Form::submit('Inserir Cliente', array('class' => 'btn btn-primary buttonCad')) }}   	
         
 {{ Form::close() }}

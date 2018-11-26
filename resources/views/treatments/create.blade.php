@@ -38,7 +38,7 @@
         </div> 
     </div>
 
-    <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('treatments') }}">Voltar</a> 
+    <!-- <a class="btn btn-small btn-primary buttonCad" href="{{ URL::to('treatments') }}">Voltar</a> --> 
     {{ Form::submit('Inserir Tratamento', array('class' => 'btn btn-primary buttonCad')) }}
     
 {{ Form::close() }}
