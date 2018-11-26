@@ -23,7 +23,7 @@ class CreateCalendarsTable extends Migration
             $table->string('event_name');
             $table->dateTime('start_date');
             $table->dateTime('end_date');
-            $table->boolean('full_day')->default(false);;
+            $table->boolean('full_day')->default(false);
             $table->foreign('client_id')->references('id')->on('clients');
             $table->foreign('clinic_id')->references('id')->on('clinics');
             $table->foreign('treatment_id')->references('id')->on('treatments');
